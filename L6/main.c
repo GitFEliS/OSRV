@@ -8,12 +8,13 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t condvar = PTHREAD_COND_INITIALIZER;
 
 void *consumer (void * notused){
-	printf("this is consumer");
+	printf("this is consumer\n");
 	while(1){
 		pthread_mutex_lock(&mutex);
 		printf("W1 \n");
 		while(!data_ready){
 			printf("W2\n");
+			printf("Group I993\n");
 			pthread_cond_wait(&condvar, &mutex);
 			printf("W3\n");
 		}
@@ -31,6 +32,7 @@ void *producer (void *notused){
 		printf("Suplyer get data from h/w = %d\n", inf);
 		pthread_mutex_lock(&mutex);
 		printf("Wp1\n");
+		printf("Nuzhdin Dmitriy\n");
 		while(data_ready){
 			printf("Wp2\n");
 			pthread_cond_wait(&condvar, &mutex);
